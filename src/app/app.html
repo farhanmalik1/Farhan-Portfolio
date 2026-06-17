@@ -648,24 +648,43 @@
       </div>
       }
 
-      <form (submit)="handleFeedback($event)" class="space-y-6">
+      <form #contactForm="ngForm" (submit)="handleFeedback($event, contactForm)" class="space-y-6" novalidate>
         <div>
           <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Name</label>
-          <input type="text" [(ngModel)]="contactName" name="contactName" required placeholder="e.g. John Doe"
+          <input type="text" [(ngModel)]="contactName" name="contactName" #nameInput="ngModel" required placeholder="e.g. John Doe"
             [disabled]="isSubmitting()"
+            [class.!border-red-600]="(nameInput.invalid && (nameInput.dirty || nameInput.touched || formSubmitted()))"
             class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50">
+          @if (nameInput.invalid && (nameInput.dirty || nameInput.touched || formSubmitted())) {
+            <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+              Name is required
+            </span>
+          }
         </div>
         <div>
           <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Email</label>
-          <input type="email" [(ngModel)]="contactEmail" name="contactEmail" required
+          <input type="email" [(ngModel)]="contactEmail" name="contactEmail" #emailInput="ngModel" required email
             placeholder="e.g. dev&#64;example.com" [disabled]="isSubmitting()"
+            [class.!border-red-600]="(emailInput.invalid && (emailInput.dirty || emailInput.touched || formSubmitted()))"
             class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50">
+          @if (emailInput.invalid && (emailInput.dirty || emailInput.touched || formSubmitted())) {
+            <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+              @if (emailInput.errors?.['required']) { Email is required }
+              @else if (emailInput.errors?.['email']) { Please enter a valid email format }
+            </span>
+          }
         </div>
         <div>
           <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Message</label>
-          <textarea [(ngModel)]="contactMessage" name="contactMessage" required rows="5"
+          <textarea [(ngModel)]="contactMessage" name="contactMessage" #messageInput="ngModel" required rows="5"
             placeholder="Share details of your upcoming project..." [disabled]="isSubmitting()"
+            [class.!border-red-600]="(messageInput.invalid && (messageInput.dirty || messageInput.touched || formSubmitted()))"
             class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50"></textarea>
+          @if (messageInput.invalid && (messageInput.dirty || messageInput.touched || formSubmitted())) {
+            <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+              Message is required
+            </span>
+          }
         </div>
 
         <button type="submit" [disabled]="isSubmitting()"

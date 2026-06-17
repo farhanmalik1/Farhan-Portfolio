@@ -55,6 +55,7 @@ export class App implements OnInit, OnDestroy {
 
   public ngOnInit(): void {
     this.startTypewriter();
+    this.initializeTheme();
   }
 
   public ngOnDestroy(): void {
@@ -108,6 +109,7 @@ export class App implements OnInit, OnDestroy {
   protected readonly feedbackSuccess = signal(false);
   protected readonly feedbackError = signal(false);
   protected readonly isSubmitting = signal(false);
+  protected readonly formSubmitted = signal(false);
 
   // Portfolio items
   protected readonly projects = [
@@ -147,52 +149,80 @@ export class App implements OnInit, OnDestroy {
     this.isDarkMode.update(dark => !dark);
     if (this.isDarkMode()) {
       document.documentElement.classList.add('dark');
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('portfolio-theme', 'dark');
+      }
     } else {
       document.documentElement.classList.remove('dark');
+      if (typeof window !== 'undefined' && window.localStorage) {
+        localStorage.setItem('portfolio-theme', 'light');
+      }
     }
   }
 
-  protected handleFeedback(event: Event): void {
-    event.preventDefault();
-    if (this.contactName() && this.contactEmail() && this.contactMessage()) {
-      this.isSubmitting.set(true);
-      this.feedbackSuccess.set(false);
-      this.feedbackError.set(false);
-
-      fetch("https://formsubmit.co/ajax/farhanmalik12569@gmail.com", {
-        method: "POST",
-        headers: {
-          'Content-Type': 'application/json',
-          'Accept': 'application/json'
-        },
-        body: JSON.stringify({
-          name: this.contactName(),
-          email: this.contactEmail(),
-          message: this.contactMessage(),
-          _subject: `New Portfolio Message from ${this.contactName()}`
-        })
-      })
-      .then(response => {
-        if (!response.ok) {
-          throw new Error('Form submission failed');
-        }
-        return response.json();
-      })
-      .then(data => {
-        this.isSubmitting.set(false);
-        this.feedbackSuccess.set(true);
-        setTimeout(() => this.feedbackSuccess.set(false), 8000);
-        this.contactName.set('');
-        this.contactEmail.set('');
-        this.contactMessage.set('');
-      })
-      .catch(error => {
-        this.isSubmitting.set(false);
-        this.feedbackError.set(true);
-        setTimeout(() => this.feedbackError.set(false), 8000);
-        console.error("FormSubmit Error:", error);
-      });
+  private initializeTheme(): void {
+    if (typeof window !== 'undefined' && window.localStorage) {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      
+      const shouldBeDark = savedTheme === 'dark' || (!savedTheme && prefersDark);
+      
+      this.isDarkMode.set(shouldBeDark);
+      if (shouldBeDark) {
+        document.documentElement.classList.add('dark');
+      } else {
+        document.documentElement.classList.remove('dark');
+      }
     }
+  }
+
+  protected handleFeedback(event: Event, form: any): void {
+    event.preventDefault();
+    this.formSubmitted.set(true);
+
+    if (form.invalid) {
+      return;
+    }
+
+    this.isSubmitting.set(true);
+    this.feedbackSuccess.set(false);
+    this.feedbackError.set(false);
+
+    fetch("https://formsubmit.co/ajax/farhanmalik12569@gmail.com", {
+      method: "POST",
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({
+        name: this.contactName(),
+        email: this.contactEmail(),
+        message: this.contactMessage(),
+        _subject: `New Portfolio Message from ${this.contactName()}`
+      })
+    })
+    .then(response => {
+      if (!response.ok) {
+        throw new Error('Form submission failed');
+      }
+      return response.json();
+    })
+    .then(data => {
+      this.isSubmitting.set(false);
+      this.feedbackSuccess.set(true);
+      setTimeout(() => this.feedbackSuccess.set(false), 8000);
+      form.resetForm();
+      this.contactName.set('');
+      this.contactEmail.set('');
+      this.contactMessage.set('');
+      this.formSubmitted.set(false);
+    })
+    .catch(error => {
+      this.isSubmitting.set(false);
+      this.feedbackError.set(true);
+      setTimeout(() => this.feedbackError.set(false), 8000);
+      console.error("FormSubmit Error:", error);
+    });
   }
 }
 
