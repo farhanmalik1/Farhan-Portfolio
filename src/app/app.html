@@ -25,19 +25,35 @@
         </span>
       </div>
     </div>
+    <!-- Logo Text Label -->
+    <span class="hidden md:inline-block font-bungee text-lg text-black dark:text-white tracking-wider ml-1 select-none">
+      FARHAN<span class="text-main">//</span>DEV
+    </span>
   </a>
 
   <!-- Desktop Navigation -->
-  <nav class="hidden xl:flex items-center gap-8 font-heading font-bold text-sm">
-    <a href="#about" class="text-black hover:text-main transition-colors">// About</a>
-    <a href="#projects" class="text-black hover:text-main transition-colors">// Projects</a>
-    <a href="#experience" class="text-black hover:text-main transition-colors">// Experience</a>
-    <a href="#skills" class="text-black hover:text-main transition-colors">// Skills</a>
-    <a href="#education" class="text-black hover:text-main transition-colors">// Education</a>
-    <a href="#contact" class="text-black hover:text-main transition-colors">// Contact</a>
+  <nav class="hidden xl:flex items-center gap-3 font-heading font-bold text-xs uppercase tracking-wide">
+    <a href="#about" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-green hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // About
+    </a>
+    <a href="#projects" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-blue hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Projects
+    </a>
+    <a href="#experience" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-purple hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Experience
+    </a>
+    <a href="#skills" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-yellow hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Skills
+    </a>
+    <a href="#education" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-orange hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Education
+    </a>
+    <a href="#contact" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-main hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Contact
+    </a>
   </nav>
 
-  <div class="flex items-center gap-4">
+  <div class="flex items-center gap-3">
 
     <a href="https://linkedin.com/in/farhanmalikdev" target="_blank" rel="noopener noreferrer"
       class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
@@ -59,7 +75,7 @@
       </svg>
     </a>
 
-    <a href="#contact" class="brutal-btn inline-block text-sm uppercase tracking-wide">
+    <a href="#contact" class="brutal-btn hidden sm:inline-block text-xs uppercase tracking-wide">
       Let's Connect!
     </a>
 
@@ -81,8 +97,50 @@
       }
     </button>
 
+    <!-- Mobile Menu Button -->
+    <button (click)="toggleMobileMenu()"
+      class="xl:hidden w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer"
+      aria-label="Toggle Mobile Menu">
+      @if (isMobileMenuOpen()) {
+      <svg class="h-5 w-5 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      } @else {
+      <svg class="h-5 w-5 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      }
+    </button>
+
   </div>
 </header>
+
+<!-- Mobile Navigation Drawer Overlay -->
+@if (isMobileMenuOpen()) {
+<div @fadeSlideInOut
+  class="xl:hidden fixed top-[75px] left-0 w-full bg-bg-cream dark:bg-neutral-900 border-b-3 border-black p-6 z-40 flex flex-col gap-4 shadow-brutal-lg">
+  <nav class="flex flex-col gap-3 font-heading font-bold text-sm uppercase tracking-wide">
+    <a href="#about" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-green text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // About
+    </a>
+    <a href="#projects" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-blue text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Projects
+    </a>
+    <a href="#experience" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-purple text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Experience
+    </a>
+    <a href="#skills" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-yellow text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Skills
+    </a>
+    <a href="#education" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-orange text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Education
+    </a>
+    <a href="#contact" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-main text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Contact
+    </a>
+  </nav>
+</div>
+}
 
 <main class="w-full">
 

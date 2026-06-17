@@ -119,12 +119,29 @@ body {
 }
 
 /* Standard link colors in dark mode */
-.dark a:not(.brutal-btn) {
+.dark a:not(.brutal-btn):not([class*="hover:bg-"]):not(footer a):not(header nav a) {
   color: #ffffff !important;
 }
 
-.dark a:not(.brutal-btn):hover {
+.dark a:not(.brutal-btn):not([class*="hover:bg-"]):not(footer a):not(header nav a):hover {
   color: var(--color-main) !important;
+}
+
+/* Header navigation links in dark mode */
+.dark header nav a {
+  color: #ffffff !important;
+  border-color: transparent !important;
+}
+
+.dark header nav a:hover {
+  color: #000000 !important;
+  border-color: #000000 !important;
+}
+
+/* Header action hover overrides */
+.dark header a:hover,
+.dark header button:hover {
+  color: #000000 !important;
 }
 
 /* Header & Footer in Dark Mode */

@@ -34,6 +34,13 @@ export class App implements OnInit, OnDestroy {
   // Scroll Progress logic
   protected readonly scrollProgress = signal(0);
 
+  // Mobile Menu state
+  protected readonly isMobileMenuOpen = signal(false);
+
+  protected toggleMobileMenu(): void {
+    this.isMobileMenuOpen.update(open => !open);
+  }
+
   @HostListener('window:scroll', [])
   protected onWindowScroll(): void {
     const scrollTop = window.scrollY || document.documentElement.scrollTop;
