@@ -114,7 +114,7 @@ body {
   color: #ffffff !important;
 }
 
-.dark p, .dark li span, .dark span:not([class*="bg-accent-"]):not([class*="bg-main"]):not(.text-main):not(.text-emerald-500):not(.text-emerald-600) {
+.dark p, .dark li span, .dark span:not([class*="bg-accent-"]):not([class*="bg-main"]):not(.text-main):not(.text-emerald-500):not(.text-emerald-600):not([class*="text-red-"]) {
   color: rgba(255, 255, 255, 0.85) !important;
 }
 
@@ -224,7 +224,7 @@ body {
 .dark .bg-accent-green h4,
 .dark .bg-accent-green p,
 .dark .bg-accent-green label,
-.dark .bg-accent-green span:not(.bg-white):not(.bg-bg-cream-dark),
+.dark .bg-accent-green span:not(.bg-white):not(.bg-bg-cream-dark):not([class*="text-red-"]),
 .dark .bg-accent-blue h1,
 .dark .bg-accent-blue h2,
 .dark .bg-accent-blue h3,
@@ -288,4 +288,10 @@ body {
 /* Scroll progress styling */
 #scroll-progress {
   transition: width 0.05s linear;
+}
+
+/* Ensure form validation messages stay red in dark mode */
+.dark .bg-accent-green span[class*="text-red-"],
+.dark span[class*="text-red-"] {
+  color: #b91c1c !important;
 }
