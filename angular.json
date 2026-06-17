@@ -2,7 +2,8 @@
   "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
   "version": 1,
   "cli": {
-    "packageManager": "npm"
+    "packageManager": "npm",
+    "analytics": "9fdbfcff-f861-4452-86b8-8a68a21fb181"
   },
   "newProjectRoot": "projects",
   "projects": {
@@ -66,6 +67,12 @@
         },
         "test": {
           "builder": "@angular/build:unit-test"
+        },
+        "deploy": {
+          "builder": "angular-cli-ghpages:deploy",
+          "options": {
+            "baseHref": "https://farhanmalik1.github.io/Farhan-Portfolio/"
+          }
         }
       }
     }
