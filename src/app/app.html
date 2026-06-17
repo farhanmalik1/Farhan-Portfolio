@@ -1,19 +1,29 @@
 <!-- Interactive Sticky Navigation Bar -->
 <header class="sticky top-0 z-50 flex justify-between items-center px-6 py-4 border-b-3 border-black bg-bg-cream">
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"
+       class="absolute top-0 left-0 h-1.5 bg-main border-b border-black z-50"
+       [style.width.%]="scrollProgress()">
+  </div>
+
   <a href="#"
     class="group flex items-center transition-all duration-300"
     aria-label="Farhan Amjad Portfolio">
     <div class="relative w-[66px] h-10 select-none mr-2">
       <!-- Letter F badge -->
-      <span
-        class="absolute left-0 top-0 w-9 h-9 bg-main text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl -rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[-2px] group-hover:scale-105 z-10">
-        F
-      </span>
+      <div class="animate-brutal-float-1 absolute left-0 top-0 z-10">
+        <span
+          class="w-9 h-9 bg-main text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl -rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[-2px] group-hover:scale-105 block">
+          F
+        </span>
+      </div>
       <!-- Letter A badge -->
-      <span
-        class="absolute right-0 bottom-0 w-9 h-9 bg-accent-yellow text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[2px] group-hover:scale-105 z-20">
-        A
-      </span>
+      <div class="animate-brutal-float-2 absolute right-0 bottom-0 z-20">
+        <span
+          class="w-9 h-9 bg-accent-yellow text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[2px] group-hover:scale-105 block">
+          A
+        </span>
+      </div>
     </div>
   </a>
 
@@ -88,7 +98,7 @@
 
       <h1 class="text-5xl md:text-7xl font-heading font-black leading-[0.95] text-black mb-8 uppercase">
         Building Web <br class="hidden md:inline">
-        Apps With <span class="bg-accent-green border-b-4 border-black px-2 py-0.5">Bold</span> Intent.
+        Apps With <br class="inline md:hidden"><span class="bg-accent-green border-b-4 border-black px-2 py-0.5 inline-block min-h-[1.1em] align-bottom">{{ displayedText() }}<span class="inline-block w-3.5 h-[0.85em] bg-black align-middle ml-1.5 animate-pulse"></span></span>
       </h1>
 
       <p class="text-lg md:text-xl font-medium text-black/80 max-w-xl mb-10 leading-relaxed">
@@ -563,7 +573,7 @@
       </p>
 
       @if (feedbackSuccess()) {
-      <div
+      <div @fadeSlideInOut
         class="bg-white border-3 border-black rounded-xl p-4 mb-6 shadow-brutal-sm flex items-center gap-3 text-black font-bold">
         <span class="text-2xl">🎉</span>
         <span>Thank you! Your message was sent successfully. I will get back to you soon.</span>
@@ -571,7 +581,7 @@
       }
 
       @if (feedbackError()) {
-      <div
+      <div @fadeSlideInOut
         class="bg-white border-3 border-black rounded-xl p-4 mb-6 shadow-brutal-sm flex items-center gap-3 text-black font-bold">
         <span class="text-2xl">⚠️</span>
         <span>Something went wrong. Please try again or email me directly at <a

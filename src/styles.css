@@ -240,3 +240,35 @@ body {
 .dark .brutal-btn:not(.bg-black) {
   color: #000000 !important;
 }
+
+/* Neo-Brutalist floating animations */
+@keyframes brutal-float-1 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-6px);
+  }
+}
+
+@keyframes brutal-float-2 {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(6px);
+  }
+}
+
+@utility animate-brutal-float-1 {
+  animation: brutal-float-1 4s ease-in-out infinite;
+}
+
+@utility animate-brutal-float-2 {
+  animation: brutal-float-2 4s ease-in-out infinite;
+}
+
+/* Scroll progress styling */
+#scroll-progress {
+  transition: width 0.05s linear;
+}
