@@ -32,7 +32,7 @@
   </a>
 
   <!-- Desktop Navigation -->
-  <nav class="hidden xl:flex items-center gap-3 font-heading font-bold text-xs uppercase tracking-wide">
+  <nav class="hidden lg:flex items-center gap-3 font-heading font-bold text-xs uppercase tracking-wide">
     <a href="#about" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-green hover:shadow-brutal-sm rounded-lg transition-all duration-150">
       // About
     </a>
@@ -56,7 +56,7 @@
   <div class="flex items-center gap-3">
 
     <a href="https://linkedin.com/in/farhanmalikdev" target="_blank" rel="noopener noreferrer"
-      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      class="hidden sm:flex w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
       aria-label="LinkedIn Profile">
       <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
         xmlns="http://www.w3.org/2000/svg">
@@ -66,7 +66,7 @@
     </a>
 
     <a href="https://github.com/farhanmalik1" target="_blank" rel="noopener noreferrer"
-      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      class="hidden sm:flex w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
       aria-label="GitHub Profile">
       <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
         xmlns="http://www.w3.org/2000/svg">
@@ -99,7 +99,7 @@
 
     <!-- Mobile Menu Button -->
     <button (click)="toggleMobileMenu()"
-      class="xl:hidden w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer"
+      class="lg:hidden w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer"
       aria-label="Toggle Mobile Menu">
       @if (isMobileMenuOpen()) {
       <svg class="h-5 w-5 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
@@ -117,8 +117,8 @@
 
 <!-- Mobile Navigation Drawer Overlay -->
 @if (isMobileMenuOpen()) {
-<div
-  class="xl:hidden fixed top-[75px] left-0 w-full bg-bg-cream dark:bg-neutral-900 border-b-3 border-black p-6 z-40 flex flex-col gap-4 shadow-brutal-lg">
+<div @menuAnimation
+  class="lg:hidden fixed top-[80px] left-2 right-2 bg-bg-cream dark:bg-neutral-900 border-3 border-black p-6 z-40 flex flex-col gap-4 shadow-brutal-lg max-h-[calc(100vh-95px)] overflow-y-auto rounded-xl">
   <nav class="flex flex-col gap-3 font-heading font-bold text-sm uppercase tracking-wide">
     <a href="#about" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-green text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
       // About
@@ -139,5 +139,32 @@
       // Contact
     </a>
   </nav>
+
+  <!-- Mobile Social and Connect Links -->
+  <div class="flex items-center justify-center gap-4 mt-2 pt-4 border-t-2 border-black">
+    <a href="https://linkedin.com/in/farhanmalikdev" target="_blank" rel="noopener noreferrer"
+      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      aria-label="LinkedIn Profile">
+      <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+      </svg>
+    </a>
+
+    <a href="https://github.com/farhanmalik1" target="_blank" rel="noopener noreferrer"
+      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      aria-label="GitHub Profile">
+      <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+      </svg>
+    </a>
+
+    <a href="#contact" (click)="isMobileMenuOpen.set(false)" class="brutal-btn text-xs uppercase tracking-wide">
+      Let's Connect!
+    </a>
+  </div>
 </div>
 }
