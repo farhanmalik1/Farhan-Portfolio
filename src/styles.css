@@ -1,0 +1,235 @@
+@import "tailwindcss";
+
+/* Enable class-based dark mode toggle in Tailwind CSS v4 */
+@custom-variant dark (&:where(.dark, .dark *));
+
+@theme {
+  /* Primary Accent - Vibrant Brutalist Coral Pink */
+  --color-main: #FF6B8B;
+  --color-main-hover: #e04b6b;
+  --color-main-foreground: #000000;
+  
+  /* Harmonious Accents */
+  --color-accent-yellow: #FFDE4D;
+  --color-accent-green: #A3E635;
+  --color-accent-blue: #38BDF8;
+  --color-accent-purple: #C084FC;
+  --color-accent-orange: #FB923C;
+  
+  /* Curated warm backgrounds to replace cold whites */
+  --color-bg-cream: #FFFDF4;
+  --color-bg-cream-dark: #F5EFEB;
+  --color-bg-dark: #121212;
+  
+  --color-border: #000000;
+  
+  /* Shadow configurations */
+  --shadow-brutal-sm: 2px 2px 0px 0px #000000;
+  --shadow-brutal: 5px 5px 0px 0px #000000;
+  --shadow-brutal-lg: 8px 8px 0px 0px #000000;
+  
+  /* Font styling */
+  --font-sans: "Outfit", sans-serif;
+  --font-heading: "Space Grotesk", sans-serif;
+}
+
+/* Global setup */
+body {
+  background-color: var(--color-bg-cream);
+  color: #000000;
+  font-family: var(--font-sans);
+  transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+}
+
+/* Micro-animations and utility interactions */
+@utility brutal-btn {
+  background-color: var(--color-main);
+  color: var(--color-main-foreground);
+  border: 3px solid #000000;
+  border-radius: 8px;
+  padding: 0.5rem 1.25rem;
+  font-weight: 700;
+  font-family: var(--font-heading);
+  box-shadow: 5px 5px 0px 0px #000000;
+  transition: all 0.15s cubic-bezier(0.16, 1, 0.3, 1);
+  cursor: pointer;
+  
+  &:hover {
+    transform: translate(-2px, -2px);
+    box-shadow: 8px 8px 0px 0px #000000;
+  }
+  
+  &:active {
+    transform: translate(3px, 3px);
+    box-shadow: 2px 2px 0px 0px #000000;
+  }
+}
+
+@utility brutal-card {
+  background-color: #ffffff;
+  border: 3px solid #000000;
+  border-radius: 12px;
+  box-shadow: 5px 5px 0px 0px #000000;
+  transition: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+  
+  .dark & {
+    background-color: #1e1e1e;
+  }
+  
+  &:hover {
+    transform: translate(-3px, -3px);
+    box-shadow: 8px 8px 0px 0px #000000;
+  }
+}
+
+/* Marquee infinite scroll animation */
+@keyframes scroll {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+@utility animate-marquee {
+  display: flex;
+  width: max-content;
+  animation: scroll 30s linear infinite;
+}
+
+/* ----------------------------------------------------
+   Refined Dark Mode Stylesheet Overrides 
+   ---------------------------------------------------- */
+.dark body {
+  background-color: var(--color-bg-dark);
+  color: #ffffff;
+}
+
+/* Global Typography adapting to dark mode with priority override */
+.dark h1, .dark h2, .dark h3, .dark h4, .dark label, .dark footer p {
+  color: #ffffff !important;
+}
+
+.dark p, .dark li span, .dark span:not([class*="bg-accent-"]):not([class*="bg-main"]):not(.text-main):not(.text-emerald-500):not(.text-emerald-600) {
+  color: rgba(255, 255, 255, 0.85) !important;
+}
+
+/* Standard link colors in dark mode */
+.dark a:not(.brutal-btn) {
+  color: #ffffff !important;
+}
+
+.dark a:not(.brutal-btn):hover {
+  color: var(--color-main) !important;
+}
+
+/* Header & Footer in Dark Mode */
+.dark header {
+  background-color: #1a1a1a !important;
+  border-color: #000000 !important;
+}
+
+.dark header a {
+  color: #ffffff !important;
+}
+
+.dark footer {
+  border-top-color: #000000 !important;
+  background-color: #0d0d0d !important;
+}
+
+/* Alternating dark section backgrounds */
+.dark section.bg-bg-cream-dark {
+  background-color: #1a1a1a !important;
+}
+
+.dark section.bg-bg-cream {
+  background-color: var(--color-bg-dark) !important;
+}
+
+/* Ensure card backgrounds change to dark charcoal */
+.dark .brutal-card, .dark .bg-white {
+  background-color: #1e1e1e !important;
+}
+
+/* Badges / Tech tags in Dark Mode */
+.dark span.bg-bg-cream-dark {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+}
+
+/* Keep borders and shadows black in dark mode to retain Neo Brutalist look */
+.dark .border-black, .dark .border-2, .dark .border-b-3, .dark .border-t-3 {
+  border-color: #000000 !important;
+}
+
+.dark .shadow-brutal-sm {
+  box-shadow: 2px 2px 0px 0px #000000 !important;
+}
+
+.dark .shadow-brutal {
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+}
+
+.dark .shadow-brutal-lg {
+  box-shadow: 8px 8px 0px 0px #000000 !important;
+}
+
+/* Form Inputs dark mode overrides */
+.dark input, .dark textarea {
+  background-color: #2b2b2b !important;
+  color: #ffffff !important;
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px 0px #000000 !important;
+}
+
+.dark input:focus, .dark textarea:focus {
+  background-color: #333333 !important;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+}
+
+/* Saturated panels (Green/Blue contact boxes) - keep their colors but style text & inputs */
+.dark .bg-accent-green {
+  background-color: var(--color-accent-green) !important;
+}
+
+.dark .bg-accent-blue {
+  background-color: var(--color-accent-blue) !important;
+}
+
+.dark .bg-accent-green h1,
+.dark .bg-accent-green h2,
+.dark .bg-accent-green h3,
+.dark .bg-accent-green h4,
+.dark .bg-accent-green p,
+.dark .bg-accent-green label,
+.dark .bg-accent-green span:not(.bg-white):not(.bg-bg-cream-dark),
+.dark .bg-accent-blue h1,
+.dark .bg-accent-blue h2,
+.dark .bg-accent-blue h3,
+.dark .bg-accent-blue h4,
+.dark .bg-accent-blue p,
+.dark .bg-accent-blue label,
+.dark .bg-accent-blue span:not(.bg-white):not(.bg-bg-cream-dark) {
+  color: #000000 !important;
+}
+
+.dark .bg-accent-green input, .dark .bg-accent-green textarea,
+.dark .bg-accent-blue input, .dark .bg-accent-blue textarea {
+  background-color: #ffffff !important;
+  color: #000000 !important;
+  border-color: #000000 !important;
+  box-shadow: 3px 3px 0px 0px #000000 !important;
+}
+
+.dark .bg-accent-green input:focus, .dark .bg-accent-green textarea:focus,
+.dark .bg-accent-blue input:focus, .dark .bg-accent-blue textarea:focus {
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+}
+
+.dark .bg-accent-green .brutal-btn, .dark .bg-accent-green button,
+.dark .bg-accent-blue .brutal-btn, .dark .bg-accent-blue button {
+  border-color: #000000 !important;
+  box-shadow: 5px 5px 0px 0px #000000 !important;
+}
+
+.dark .brutal-btn:not(.bg-black) {
+  color: #000000 !important;
+}
