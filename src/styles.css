@@ -31,9 +31,16 @@
   /* Font styling */
   --font-sans: "Outfit", sans-serif;
   --font-heading: "Space Grotesk", sans-serif;
+  --font-righteous: "Righteous", sans-serif;
+  --font-bungee: "Bungee", sans-serif;
+  --font-syne: "Syne", sans-serif;
 }
 
 /* Global setup */
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   background-color: var(--color-bg-cream);
   color: #000000;
