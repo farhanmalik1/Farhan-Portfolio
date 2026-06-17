@@ -1,0 +1,50 @@
+<!-- Project Showcase Section -->
+<section id="projects" class="py-16 md:py-24 bg-bg-cream-dark border-b-3 border-black">
+  <div class="max-w-7xl mx-auto px-6">
+
+    <div class="text-center max-w-2xl mx-auto mb-16">
+      <h2 class="text-4xl md:text-5xl font-heading font-black uppercase text-black mb-4">
+        Featured Projects
+      </h2>
+      <p class="text-lg font-semibold text-black/70">
+        A selection of enterprise and contract applications built with high-performance architectures.
+      </p>
+    </div>
+
+    <!-- Projects Grid Layout -->
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+      @for (project of projects; track project.title) {
+      <div class="brutal-card bg-white p-8 flex flex-col justify-between min-h-[280px]">
+        <div>
+          <div class="flex justify-between items-center mb-6">
+            <span class="border-2 border-black px-3 py-1 text-xs font-bold rounded-full uppercase shadow-brutal-sm"
+              [class]="project.color">
+              Frontend
+            </span>
+            <span class="text-xs font-bold font-heading text-black/40">// ENTERPRISE WORK</span>
+          </div>
+
+          <h3 class="text-3xl font-heading font-bold text-black mb-3">
+            {{ project.title }}
+          </h3>
+
+          <p class="text-black/80 font-medium leading-relaxed mb-6">
+            {{ project.desc }}
+          </p>
+        </div>
+
+        <div>
+          <div class="flex flex-wrap gap-2">
+            @for (tech of project.tech; track tech) {
+            <span class="bg-bg-cream-dark text-black text-xs font-bold border border-black px-2.5 py-1 rounded">
+              {{ tech }}
+            </span>
+            }
+          </div>
+        </div>
+      </div>
+      }
+    </div>
+
+  </div>
+</section>

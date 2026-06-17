@@ -12,6 +12,15 @@
   <link
     href="https://fonts.googleapis.com/css2?family=Outfit:wght@400;500;700&family=Space+Grotesk:wght@500;700&family=Righteous&family=Bungee&family=Syne:wght@800&display=swap"
     rel="stylesheet">
+  <script>
+    try {
+      const savedTheme = localStorage.getItem('portfolio-theme');
+      const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+      if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+        document.documentElement.classList.add('dark');
+      }
+    } catch (e) {}
+  </script>
 </head>
 
 <body>

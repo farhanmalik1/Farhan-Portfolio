@@ -1,0 +1,86 @@
+<!-- Get in Touch / Contact Section -->
+<section id="contact" class="py-16 md:py-24 px-6 max-w-4xl mx-auto">
+  <!-- Feedback Form Card -->
+  <div class="bg-accent-green border-3 border-black rounded-2xl p-8 md:p-10 shadow-brutal-lg">
+    <h2 class="text-4xl md:text-5xl font-heading font-black text-black uppercase mb-4 text-center">
+      Get In Touch
+    </h2>
+    <p class="text-lg md:text-xl font-semibold text-black/85 mb-8 text-center max-w-2xl mx-auto">
+      Need a robust Angular application or state-of-the-art frontend architecture? Let's connect!
+    </p>
+
+    @if (feedbackSuccess()) {
+    <div @fadeSlideInOut
+      class="bg-white border-3 border-black rounded-xl p-4 mb-6 shadow-brutal-sm flex items-center gap-3 text-black font-bold">
+      <span class="text-2xl">🎉</span>
+      <span>Thank you! Your message was sent successfully. I will get back to you soon.</span>
+    </div>
+    }
+
+    @if (feedbackError()) {
+    <div @fadeSlideInOut
+      class="bg-white border-3 border-black rounded-xl p-4 mb-6 shadow-brutal-sm flex items-center gap-3 text-black font-bold">
+      <span class="text-2xl">⚠️</span>
+      <span>Something went wrong. Please try again or email me directly at <a
+          href="mailto:farhanmalik12569&#64;gmail.com"
+          class="underline hover:text-main font-bold">farhanmalik12569&#64;gmail.com</a></span>
+    </div>
+    }
+
+    <form #contactForm="ngForm" (submit)="handleFeedback($event, contactForm)" class="space-y-6" novalidate>
+      <div>
+        <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Name</label>
+        <input type="text" [(ngModel)]="contactName" name="contactName" #nameInput="ngModel" required placeholder="e.g. John Doe"
+          [disabled]="isSubmitting()"
+          [class.!border-red-600]="(nameInput.invalid && (nameInput.dirty || nameInput.touched || formSubmitted()))"
+          class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50">
+        @if (nameInput.invalid && (nameInput.dirty || nameInput.touched || formSubmitted())) {
+          <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+            Name is required
+          </span>
+        }
+      </div>
+      <div>
+        <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Email</label>
+        <input type="email" [(ngModel)]="contactEmail" name="contactEmail" #emailInput="ngModel" required email
+          placeholder="e.g. dev&#64;example.com" [disabled]="isSubmitting()"
+          [class.!border-red-600]="(emailInput.invalid && (emailInput.dirty || emailInput.touched || formSubmitted()))"
+          class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50">
+        @if (emailInput.invalid && (emailInput.dirty || emailInput.touched || formSubmitted())) {
+          <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+            @if (emailInput.errors?.['required']) { Email is required }
+            @else if (emailInput.errors?.['email']) { Please enter a valid email format }
+          </span>
+        }
+      </div>
+      <div>
+        <label class="block font-heading font-bold text-black mb-2 uppercase tracking-wide">Your Message</label>
+        <textarea [(ngModel)]="contactMessage" name="contactMessage" #messageInput="ngModel" required rows="5"
+          placeholder="Share details of your upcoming project..." [disabled]="isSubmitting()"
+          [class.!border-red-600]="(messageInput.invalid && (messageInput.dirty || messageInput.touched || formSubmitted()))"
+          class="w-full bg-white border-3 border-black rounded-lg p-3 font-semibold text-black placeholder:text-black/40 focus:outline-none shadow-brutal-sm focus:translate-x-[-1px] focus:translate-y-[-1px] focus:shadow-brutal transition-all disabled:opacity-50"></textarea>
+        @if (messageInput.invalid && (messageInput.dirty || messageInput.touched || formSubmitted())) {
+          <span class="block text-red-700 dark:text-red-450 font-bold text-xs mt-1.5 uppercase tracking-wider select-none">
+            Message is required
+          </span>
+        }
+      </div>
+
+      <button type="submit" [disabled]="isSubmitting()"
+        class="brutal-btn w-full uppercase tracking-wider text-base py-3.5 bg-black text-white hover:bg-neutral-850 hover:text-white flex items-center justify-center gap-2 disabled:opacity-50 cursor-pointer">
+        @if (isSubmitting()) {
+        <span>Sending message...</span>
+        <svg class="animate-spin h-5 w-5 text-white" xmlns="http://www.w3.org/2000/svg" fill="none"
+          viewBox="0 0 24 24">
+          <circle class="opacity-25" cx="12" cy="12" r="10" stroke="currentColor" stroke-width="4"></circle>
+          <path class="opacity-75" fill="currentColor"
+            d="M4 12a8 8 0 018-8V0C5.373 0 0 5.373 0 12h4zm2 5.291A7.962 7.962 0 014 12H0c0 3.042 1.135 5.824 3 7.938l3-2.647z">
+          </path>
+        </svg>
+        } @else {
+        <span>Send Message 🚀</span>
+        }
+      </button>
+    </form>
+  </div>
+</section>

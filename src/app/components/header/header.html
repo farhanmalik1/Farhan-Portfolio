@@ -1,0 +1,143 @@
+<!-- Interactive Sticky Navigation Bar -->
+<header class="sticky top-0 z-50 flex justify-between items-center px-6 py-4 border-b-3 border-black bg-bg-cream">
+  <!-- Scroll Progress Indicator -->
+  <div id="scroll-progress"
+       class="absolute top-0 left-0 h-1.5 bg-main border-b border-black z-50"
+       [style.width.%]="scrollProgress()">
+  </div>
+
+  <a href="#"
+    class="group flex items-center transition-all duration-300"
+    aria-label="Farhan Amjad Portfolio">
+    <div class="relative w-[66px] h-10 select-none mr-2">
+      <!-- Letter F badge -->
+      <div class="animate-brutal-float-1 absolute left-0 top-0 z-10">
+        <span
+          class="w-9 h-9 bg-main text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl -rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[-2px] group-hover:scale-105 block">
+          F
+        </span>
+      </div>
+      <!-- Letter A badge -->
+      <div class="animate-brutal-float-2 absolute right-0 bottom-0 z-20">
+        <span
+          class="w-9 h-9 bg-accent-yellow text-black border-2 border-black rounded-lg flex items-center justify-center shadow-brutal-sm font-bungee text-xl rotate-8 transition-all duration-300 group-hover:rotate-0 group-hover:translate-y-[2px] group-hover:scale-105 block">
+          A
+        </span>
+      </div>
+    </div>
+    <!-- Logo Text Label -->
+    <span class="hidden md:inline-block font-bungee text-lg text-black dark:text-white tracking-wider ml-1 select-none">
+      FARHAN<span class="text-main">//</span>DEV
+    </span>
+  </a>
+
+  <!-- Desktop Navigation -->
+  <nav class="hidden xl:flex items-center gap-3 font-heading font-bold text-xs uppercase tracking-wide">
+    <a href="#about" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-green hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // About
+    </a>
+    <a href="#projects" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-blue hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Projects
+    </a>
+    <a href="#experience" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-purple hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Experience
+    </a>
+    <a href="#skills" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-yellow hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Skills
+    </a>
+    <a href="#education" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-accent-orange hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Education
+    </a>
+    <a href="#contact" class="text-black dark:text-white px-3 py-2 border-2 border-transparent hover:border-black dark:hover:text-black hover:bg-main hover:shadow-brutal-sm rounded-lg transition-all duration-150">
+      // Contact
+    </a>
+  </nav>
+
+  <div class="flex items-center gap-3">
+
+    <a href="https://linkedin.com/in/farhanmalikdev" target="_blank" rel="noopener noreferrer"
+      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      aria-label="LinkedIn Profile">
+      <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.762 0 5-2.239 5-5v-14c0-2.761-2.238-5-5-5zm-11 19h-3v-11h3v11zm-1.5-12.268c-.966 0-1.75-.79-1.75-1.764s.784-1.764 1.75-1.764 1.75.79 1.75 1.764-.783 1.764-1.75 1.764zm13.5 12.268h-3v-5.604c0-3.368-4-3.113-4 0v5.604h-3v-11h3v1.765c1.396-2.586 7-2.777 7 2.476v6.759z" />
+      </svg>
+    </a>
+
+    <a href="https://github.com/farhanmalik1" target="_blank" rel="noopener noreferrer"
+      class="w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer transition-all"
+      aria-label="GitHub Profile">
+      <svg class="h-5 w-5 text-black dark:text-white" viewBox="0 0 24 24" fill="currentColor"
+        xmlns="http://www.w3.org/2000/svg">
+        <path fill-rule="evenodd" clip-rule="evenodd"
+          d="M12 2C6.477 2 2 6.484 2 12.017c0 4.425 2.865 8.18 6.839 9.504.5.092.682-.217.682-.483 0-.237-.008-.868-.013-1.703-2.782.605-3.369-1.343-3.369-1.343-.454-1.158-1.11-1.466-1.11-1.466-.908-.62.069-.608.069-.608 1.003.07 1.531 1.032 1.531 1.032.892 1.53 2.341 1.088 2.91.832.092-.647.35-1.088.636-1.338-2.22-.253-4.555-1.113-4.555-4.951 0-1.093.39-1.988 1.029-2.688-.103-.253-.446-1.272.098-2.65 0 0 .84-.27 2.75 1.026A9.564 9.564 0 0112 6.844c.85.004 1.705.115 2.504.337 1.909-1.296 2.747-1.027 2.747-1.027.546 1.379.202 2.398.1 2.651.64.7 1.028 1.595 1.028 2.688 0 3.848-2.339 4.695-4.566 4.943.359.309.678.92.678 1.855 0 1.338-.012 2.419-.012 2.747 0 .268.18.58.688.482C19.138 20.193 22 16.44 22 12.017 22 6.484 17.522 2 12 2z" />
+      </svg>
+    </a>
+
+    <a href="#contact" class="brutal-btn hidden sm:inline-block text-xs uppercase tracking-wide">
+      Let's Connect!
+    </a>
+
+    <button (click)="themeService.toggleDarkMode()"
+      class="w-10 h-10 border-2 border-black rounded-lg bg-accent-yellow flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer"
+      aria-label="Toggle Dark Mode">
+      @if (themeService.isDarkMode()) {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M12 3v1m0 16v1m9-9h-1M4 12H3m15.364-6.364l-.707.707M6.343 17.657l-.707.707m12.728 0l-.707-.707M6.343 6.343l-.707-.707M14 12a2 2 0 11-4 0 2 2 0 014 0z" />
+      </svg>
+      } @else {
+      <svg xmlns="http://www.w3.org/2000/svg" class="h-6 w-6 text-black" fill="none" viewBox="0 0 24 24"
+        stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round"
+          d="M20.354 15.354A9 9 0 018.646 3.646 9.003 9.003 0 0012 21a9.003 9.003 0 008.354-5.646z" />
+      </svg>
+      }
+    </button>
+
+    <!-- Mobile Menu Button -->
+    <button (click)="toggleMobileMenu()"
+      class="xl:hidden w-10 h-10 border-2 border-black rounded-lg bg-white dark:bg-neutral-800 flex items-center justify-center shadow-brutal-sm hover:translate-x-[-1px] hover:translate-y-[-1px] hover:shadow-brutal active:translate-x-[1px] active:translate-y-[1px] cursor-pointer"
+      aria-label="Toggle Mobile Menu">
+      @if (isMobileMenuOpen()) {
+      <svg class="h-5 w-5 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M6 18L18 6M6 6l12 12" />
+      </svg>
+      } @else {
+      <svg class="h-5 w-5 text-black dark:text-white" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <path stroke-linecap="round" stroke-linejoin="round" d="M4 6h16M4 12h16M4 18h16" />
+      </svg>
+      }
+    </button>
+
+  </div>
+</header>
+
+<!-- Mobile Navigation Drawer Overlay -->
+@if (isMobileMenuOpen()) {
+<div
+  class="xl:hidden fixed top-[75px] left-0 w-full bg-bg-cream dark:bg-neutral-900 border-b-3 border-black p-6 z-40 flex flex-col gap-4 shadow-brutal-lg">
+  <nav class="flex flex-col gap-3 font-heading font-bold text-sm uppercase tracking-wide">
+    <a href="#about" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-green text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // About
+    </a>
+    <a href="#projects" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-blue text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Projects
+    </a>
+    <a href="#experience" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-purple text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Experience
+    </a>
+    <a href="#skills" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-yellow text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Skills
+    </a>
+    <a href="#education" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-accent-orange text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Education
+    </a>
+    <a href="#contact" (click)="isMobileMenuOpen.set(false)" class="border-2 border-black bg-main text-black px-4 py-2.5 rounded-lg shadow-brutal-sm hover:translate-y-[-1px] hover:shadow-brutal transition-all text-center">
+      // Contact
+    </a>
+  </nav>
+</div>
+}
